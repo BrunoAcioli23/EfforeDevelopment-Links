@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Showroom de Modelos - Effore Development</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            background: linear-gradient(135deg, #212a32 0%, #1a2128 100%);
+            min-height: 100vh;
+            padding: 40px 20px;
+            color: #fff;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 50px;
+            animation: fadeInDown 0.8s ease;
+        }
+
+        .header h1 {
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .header p {
+            font-size: 1.2rem;
+            opacity: 0.9;
+        }
+
+        .models-grid {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+            padding: 20px;
+        }
+
+        .model-card {
+            background: #212a32;
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            border: 2px solid #fa7508;
+            padding: 25px;
+            transition: all 0.3s ease;
+            animation: fadeInUp 0.8s ease;
+            animation-fill-mode: both;
+        }
+
+        .model-card:nth-child(1) { animation-delay: 0.1s; }
+        .model-card:nth-child(2) { animation-delay: 0.2s; }
+        .model-card:nth-child(3) { animation-delay: 0.3s; }
+        .model-card:nth-child(4) { animation-delay: 0.4s; }
+        .model-card:nth-child(5) { animation-delay: 0.5s; }
+
+        .model-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(250, 117, 8, 0.5);
+            background: #2a3440;
+            border-color: #ff8c1a;
+        }
+
+        .model-preview {
+            width: 100%;
+            height: 250px;
+            border-radius: 15px;
+            overflow: hidden;
+            margin-bottom: 20px;
+            position: relative;
+            background: #fff;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .model-preview iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+            pointer-events: none;
+            transform: scale(0.5);
+            transform-origin: top left;
+            width: 200%;
+            height: 200%;
+        }
+
+        .model-info {
+            margin-bottom: 20px;
+        }
+
+        .model-info h2 {
+            font-size: 1.8rem;
+            margin-bottom: 10px;
+            font-weight: 600;
+        }
+
+        .model-info p {
+            opacity: 0.9;
+            line-height: 1.6;
+            margin-bottom: 15px;
+        }
+
+        .features {
+            list-style: none;
+            margin-bottom: 20px;
+        }
+
+        .features li {
+            padding: 8px 0;
+            display: flex;
+            align-items: center;
+            opacity: 0.9;
+        }
+
+        .features li i {
+            margin-right: 10px;
+            color: #fa7508;
+        }
+
+        .button-group {
+            display: flex;
+            gap: 10px;
+        }
+
+        .btn {
+            flex: 1;
+            padding: 12px 20px;
+            border: none;
+            border-radius: 10px;
+            font-weight: 600;
+            cursor: pointer;
+            text-decoration: none;
+            text-align: center;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+
+        .btn-primary {
+            background: #fa7508;
+            color: white;
+        }
+
+        .btn-primary:hover {
+            transform: scale(1.05);
+            box-shadow: 0 5px 15px rgba(250, 117, 8, 0.6);
+            background: #ff8c1a;
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: white;
+            border: 2px solid #fa7508;
+        }
+
+        .btn-secondary:hover {
+            background: #fa7508;
+        }
+
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 2rem;
+            }
+
+            .models-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .button-group {
+                flex-direction: column;
+            }
+        }
+
+        .footer {
+            text-align: center;
+            margin-top: 50px;
+            padding: 20px;
+            opacity: 0.8;
+        }
+
+        .model-tag {
+            display: inline-block;
+            padding: 5px 15px;
+            background: #fa7508;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            margin-bottom: 15px;
+            color: #fff;
+            font-weight: 600;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1><img src="Assets/LogoEfforeDevelopmentAbaSite.png" alt="Effore Development" style="height: 50px; vertical-align: middle; margin-right: 15px;"> Showroom de Modelos</h1>
+        <p>Escolha o modelo perfeito para suas páginas de links</p>
+    </div>
+
+    <div class="models-grid">
+        <!-- Modelo 1 -->
+        <div class="model-card">
+            <div class="model-preview">
+                <iframe src="Modelo1.html"></iframe>
+            </div>
+            <div class="model-info">
+                <span class="model-tag">Modelo #1</span>
+                <h2>Meus Links Pro</h2>
+                <p>Design moderno com efeito glassmorphism e fundo gradiente animado. Perfeito para perfis pessoais e profissionais.</p>
+                <ul class="features">
+                    <li><i class="fas fa-check-circle"></i> Gradiente animado</li>
+                    <li><i class="fas fa-check-circle"></i> Efeito vidro (glassmorphism)</li>
+                    <li><i class="fas fa-check-circle"></i> Links com hover animado</li>
+                    <li><i class="fas fa-check-circle"></i> Totalmente responsivo</li>
+                </ul>
+            </div>
+            <div class="button-group">
+                <a href="Modelo1.html" target="_blank" class="btn btn-primary">
+                    <i class="fas fa-eye"></i> Visualizar
+                </a>
+            </div>
+        </div>
+
+        <!-- Modelo 2 -->
+        <div class="model-card">
+            <div class="model-preview">
+                <iframe src="Modelo2.html"></iframe>
+            </div>
+            <div class="model-info">
+                <span class="model-tag">Modelo #2</span>
+                <h2>Boutique Glass</h2>
+                <p>Template elegante com tema escuro e vitrine de produtos. Ideal para lojas online e boutiques digitais.</p>
+                <ul class="features">
+                    <li><i class="fas fa-check-circle"></i> Vitrine de produtos</li>
+                    <li><i class="fas fa-check-circle"></i> Gradiente aurora</li>
+                    <li><i class="fas fa-check-circle"></i> Cards de produtos</li>
+                    <li><i class="fas fa-check-circle"></i> Design boutique</li>
+                </ul>
+            </div>
+            <div class="button-group">
+                <a href="Modelo2.html" target="_blank" class="btn btn-primary">
+                    <i class="fas fa-eye"></i> Visualizar
+                </a>
+            </div>
+        </div>
+
+        <!-- Modelo 3 -->
+        <div class="model-card">
+            <div class="model-preview">
+                <iframe src="Modelo3.html"></iframe>
+            </div>
+            <div class="model-info">
+                <span class="model-tag">Modelo #3</span>
+                <h2>Enterprise Premium</h2>
+                <p>Visual corporativo sofisticado com efeitos de glow e tema escuro. Perfeito para profissionais e empresas.</p>
+                <ul class="features">
+                    <li><i class="fas fa-check-circle"></i> Design corporativo</li>
+                    <li><i class="fas fa-check-circle"></i> Efeitos de brilho (glow)</li>
+                    <li><i class="fas fa-check-circle"></i> Tema escuro premium</li>
+                    <li><i class="fas fa-check-circle"></i> Layout profissional</li>
+                </ul>
+            </div>
+            <div class="button-group">
+                <a href="Modelo3.html" target="_blank" class="btn btn-primary">
+                    <i class="fas fa-eye"></i> Visualizar
+                </a>
+            </div>
+        </div>
+
+        <!-- Modelo 4 -->
+        <div class="model-card">
+            <div class="model-preview">
+                <iframe src="Modelo4.html"></iframe>
+            </div>
+            <div class="model-info">
+                <span class="model-tag">Modelo #4</span>
+                <h2>Meu Negócio Local</h2>
+                <p>Template acolhedor e vibrante para negócios locais. Com banner, horários e cards de serviços.</p>
+                <ul class="features">
+                    <li><i class="fas fa-check-circle"></i> Banner personalizado</li>
+                    <li><i class="fas fa-check-circle"></i> Cores vibrantes</li>
+                    <li><i class="fas fa-check-circle"></i> Cards de serviços</li>
+                    <li><i class="fas fa-check-circle"></i> Status "Aberto/Fechado"</li>
+                </ul>
+            </div>
+            <div class="button-group">
+                <a href="Modelo4.html" target="_blank" class="btn btn-primary">
+                    <i class="fas fa-eye"></i> Visualizar
+                </a>
+            </div>
+        </div>
+
+        <!-- Modelo 5 -->
+        <div class="model-card">
+            <div class="model-preview">
+                <iframe src="Modelo5.html"></iframe>
+            </div>
+            <div class="model-info">
+                <span class="model-tag">Modelo #5</span>
+                <h2>Neo-Pop Creative</h2>
+                <p>Design ousado com estilo neo-brutalista e cores pop. Para criativos que querem se destacar.</p>
+                <ul class="features">
+                    <li><i class="fas fa-check-circle"></i> Estilo neo-brutalista</li>
+                    <li><i class="fas fa-check-circle"></i> Letreiro rolante (marquee)</li>
+                    <li><i class="fas fa-check-circle"></i> Bordas grossas e sombras</li>
+                    <li><i class="fas fa-check-circle"></i> Design único e criativo</li>
+                </ul>
+            </div>
+            <div class="button-group">
+                <a href="Modelo5.html" target="_blank" class="btn btn-primary">
+                    <i class="fas fa-eye"></i> Visualizar
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <div class="footer">
+        <p><i class="fas fa-code"></i> Desenvolvido por Effore Development</p>
+        <p>Todos os modelos são personalizáveis e responsivos</p>
+    </div>
+</body>
+</html>
