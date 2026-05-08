@@ -28,6 +28,8 @@
             background-size: 400% 400%;
             animation: gradientBG 15s ease infinite;
             min-height: 100vh;
+            height: 100vh;
+            overflow: hidden;
             display: flex;
             justify-content: center;
             align-items: center;
@@ -58,6 +60,32 @@
         @media (min-width: 1200px) {
             body::before {
                 background-size: 620px;
+            }
+        }
+
+        @media (max-height: 720px) {
+            body {
+                padding: 12px;
+            }
+
+            .container {
+                padding: 24px 16px;
+            }
+
+            p.bio {
+                margin-bottom: 18px;
+            }
+
+            .links {
+                gap: 10px;
+            }
+
+            .link-item {
+                padding: 12px 18px;
+            }
+
+            .socials {
+                margin-top: 20px;
             }
         }
 
